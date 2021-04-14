@@ -1,6 +1,4 @@
 # CPSC 449 - Web Back-End Engineering 
-# Project 5 
-# Spring 2021 due Apr 23 (Section 02)
 
 
 ## We plan to build a microblogging service similar to Twitter
