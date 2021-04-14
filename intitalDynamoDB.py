@@ -6,17 +6,18 @@
 
 
 import boto3
+import api 
 from datetime import datetime
 now = datetime.now()
 currentDataTime = now.strftime("%d/%m/%Y %H:%M:%S")
-dynamodb = boto3.resource('dynamodb', endpoint_url='http://localhost:8000')
+dynamodb = boto3.resource('dynamodb', endpoint_url=api.dynamodbUrl)
 
 # list all the exits table at localhost port 8000
 existing_tables = dynamodb.tables.all() 
 
 # if table exit then del for creating new table
 if 'Message' in [t.name for t in existing_tables]:
- table = dynamodb.Table('Message')
+ table = dynamodb.Table(api.table)
  table.delete()
 
 table = dynamodb.create_table(

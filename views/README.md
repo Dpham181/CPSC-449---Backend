@@ -155,7 +155,7 @@
 **`listDirectMessagesFor(username)`**
 
 > ```shell-session
-> $ http GET localhost:5000/Message/test4 --auth test4:123 
+> $ http GET localhost:5000/Message/test3 --auth test4:123 
 > ```
 
 **`listRepliesTo(messageId)`**

@@ -8,6 +8,7 @@ import sys
 import textwrap
 import sqlite3
 import bottle
+import http.client
 import logging.config
 from bottle.ext import sqlite
 
@@ -25,8 +26,8 @@ TimeLines_DB = sqlite.Plugin(app.config['sqlite.dbfile2'], keyword='TimeLinesDB'
 app.install(Users_DB)
 app.install(TimeLines_DB)
 
-
-
+dynamodbUrl = app.config['dynamoDb.url']
+tableName = app.config['dynamoDb.table']
 # Return errors in JSON
 #
 # Adapted from # <https://stackoverflow.com/a/39818780>

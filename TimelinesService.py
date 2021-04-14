@@ -1,7 +1,9 @@
 import api
 import sqlite3
 from bottle import get, post, error, abort, request, response, HTTPResponse, route , run
-
+from datetime import datetime
+now = datetime.now()
+currentDataTime = now.strftime("%d/%m/%Y %H:%M:%S")
 
 # Routes
 
@@ -32,7 +34,8 @@ def getPublicTimeline(TimeLinesDB):
     rep = {'POSTS': userposts}
     if len(rep['POSTS']) < 0:
         abort(404)
-    return HTTPResponse(rep,200)
+    
+    return HTTPResponse(rep,200, {'Last-Modified':currentDataTime})
 
 
 # get Home timelines

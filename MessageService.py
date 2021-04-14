@@ -6,16 +6,17 @@
 import boto3
 import sys
 import json
-import http.client
 import textwrap
 import bottle
 from bottle import route, request, response, auth_basic , abort
 from boto3.dynamodb.conditions import Key, Attr
 from datetime import datetime
+import api
 
-table = boto3.resource('dynamodb', endpoint_url='http://localhost:8000').Table('Message')
+table = boto3.resource('dynamodb', endpoint_url=api.dynamodbUrl).Table(api.tableName)
 
 app = bottle.default_app()
+
 
 now = datetime.now()
 
