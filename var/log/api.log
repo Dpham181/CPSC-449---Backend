@@ -17,3 +17,820 @@
 [2021-04-14 15:37:59,851] DEBUG in root: Upstream URL: http://localhost:5300/Message/test2
 [2021-04-14 15:38:04,645] DEBUG in root: Upstream URL: http://localhost:5300/Message/test3
 [2021-04-14 15:39:18,674] DEBUG in root: Upstream URL: http://localhost:5300/Message/4/reply
+[2021-04-16 12:18:00,114] DEBUG in root: Requests logging enabled
+[2021-04-16 12:18:46,210] DEBUG in root: Upstream URL: http://localhost:5300/test1/Message/test2
+[2021-04-16 12:18:57,977] DEBUG in root: Upstream URL: http://localhost:5300/Message/4/reply/
+[2021-04-16 12:19:19,251] DEBUG in root: Upstream URL: http://localhost:5300/Message/1/reply
+[2021-04-16 12:19:27,429] DEBUG in root: Upstream URL: http://localhost:5300/Message/4/reply
+[2021-04-16 12:30:23,902] DEBUG in boto3.dynamodb.table: Batch write sent 3, unprocessed: 0
+[2021-04-16 12:33:41,428] DEBUG in root: Upstream URL: http://localhost:5300/Message/test1
+[2021-04-16 12:56:49,412] DEBUG in root: Upstream URL: http://localhost:5300/Message/1/reply
+[2021-04-16 21:16:17,307] DEBUG in root: Requests logging enabled
+[2021-04-16 21:30:47,176] DEBUG in root: Requests logging enabled
+[2021-04-16 23:12:41,974] DEBUG in boto3.dynamodb.table: Batch write sent 1, unprocessed: 0
+[2021-04-16 23:18:49,034] DEBUG in boto3.dynamodb.table: Batch write sent 3, unprocessed: 0
+[2021-04-16 23:26:23,124] DEBUG in root: Upstream URL: http://localhost:5300/Message/
+[2021-04-16 23:26:23,126] ERROR in root: HTTPConnectionPool(host='localhost', port=5300): Max retries exceeded with url: /Message/ (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f3b38c15790>: Failed to establish a new connection: [Errno 111] Connection refused'))
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 159, in _new_conn
+    conn = connection.create_connection(
+  File "/usr/lib/python3/dist-packages/urllib3/util/connection.py", line 84, in create_connection
+    raise err
+  File "/usr/lib/python3/dist-packages/urllib3/util/connection.py", line 74, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 665, in urlopen
+    httplib_response = self._make_request(
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 387, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "/usr/lib/python3.8/http/client.py", line 1255, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "/usr/lib/python3.8/http/client.py", line 1301, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "/usr/lib/python3.8/http/client.py", line 1250, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "/usr/lib/python3.8/http/client.py", line 1010, in _send_output
+    self.send(msg)
+  File "/usr/lib/python3.8/http/client.py", line 950, in send
+    self.connect()
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 187, in connect
+    conn = self._new_conn()
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 171, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x7f3b38c15790>: Failed to establish a new connection: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/requests/adapters.py", line 439, in send
+    resp = conn.urlopen(
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 719, in urlopen
+    retries = retries.increment(
+  File "/usr/lib/python3/dist-packages/urllib3/util/retry.py", line 436, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='localhost', port=5300): Max retries exceeded with url: /Message/ (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f3b38c15790>: Failed to establish a new connection: [Errno 111] Connection refused'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "./gateway.py", line 124, in gateway
+    upstream_response = requests.request(
+  File "/usr/lib/python3/dist-packages/requests/api.py", line 60, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "/usr/lib/python3/dist-packages/requests/sessions.py", line 533, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/usr/lib/python3/dist-packages/requests/sessions.py", line 646, in send
+    r = adapter.send(request, **kwargs)
+  File "/usr/lib/python3/dist-packages/requests/adapters.py", line 516, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='localhost', port=5300): Max retries exceeded with url: /Message/ (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f3b38c15790>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[2021-04-16 23:27:01,553] DEBUG in root: Upstream URL: http://localhost:5300/Message/
+[2021-04-16 23:27:16,621] DEBUG in root: Requests logging enabled
+[2021-04-16 23:27:17,272] DEBUG in root: Upstream URL: http://localhost:5300/Message/
+[2021-04-16 23:27:17,287] ERROR in root: HTTPConnectionPool(host='localhost', port=5300): Max retries exceeded with url: /Message/ (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f1d5b919790>: Failed to establish a new connection: [Errno 111] Connection refused'))
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 159, in _new_conn
+    conn = connection.create_connection(
+  File "/usr/lib/python3/dist-packages/urllib3/util/connection.py", line 84, in create_connection
+    raise err
+  File "/usr/lib/python3/dist-packages/urllib3/util/connection.py", line 74, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 665, in urlopen
+    httplib_response = self._make_request(
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 387, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "/usr/lib/python3.8/http/client.py", line 1255, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "/usr/lib/python3.8/http/client.py", line 1301, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "/usr/lib/python3.8/http/client.py", line 1250, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "/usr/lib/python3.8/http/client.py", line 1010, in _send_output
+    self.send(msg)
+  File "/usr/lib/python3.8/http/client.py", line 950, in send
+    self.connect()
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 187, in connect
+    conn = self._new_conn()
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 171, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x7f1d5b919790>: Failed to establish a new connection: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/requests/adapters.py", line 439, in send
+    resp = conn.urlopen(
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 719, in urlopen
+    retries = retries.increment(
+  File "/usr/lib/python3/dist-packages/urllib3/util/retry.py", line 436, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='localhost', port=5300): Max retries exceeded with url: /Message/ (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f1d5b919790>: Failed to establish a new connection: [Errno 111] Connection refused'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "./gateway.py", line 124, in gateway
+    upstream_response = requests.request(
+  File "/usr/lib/python3/dist-packages/requests/api.py", line 60, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "/usr/lib/python3/dist-packages/requests/sessions.py", line 533, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/usr/lib/python3/dist-packages/requests/sessions.py", line 646, in send
+    r = adapter.send(request, **kwargs)
+  File "/usr/lib/python3/dist-packages/requests/adapters.py", line 516, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='localhost', port=5300): Max retries exceeded with url: /Message/ (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f1d5b919790>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[2021-04-16 23:30:26,226] DEBUG in root: Requests logging enabled
+[2021-04-16 23:30:26,694] DEBUG in root: Upstream URL: http://localhost:5300/Message/
+[2021-04-16 23:30:26,709] ERROR in root: HTTPConnectionPool(host='localhost', port=5300): Max retries exceeded with url: /Message/ (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f367b286790>: Failed to establish a new connection: [Errno 111] Connection refused'))
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 159, in _new_conn
+    conn = connection.create_connection(
+  File "/usr/lib/python3/dist-packages/urllib3/util/connection.py", line 84, in create_connection
+    raise err
+  File "/usr/lib/python3/dist-packages/urllib3/util/connection.py", line 74, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 665, in urlopen
+    httplib_response = self._make_request(
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 387, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "/usr/lib/python3.8/http/client.py", line 1255, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "/usr/lib/python3.8/http/client.py", line 1301, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "/usr/lib/python3.8/http/client.py", line 1250, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "/usr/lib/python3.8/http/client.py", line 1010, in _send_output
+    self.send(msg)
+  File "/usr/lib/python3.8/http/client.py", line 950, in send
+    self.connect()
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 187, in connect
+    conn = self._new_conn()
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 171, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x7f367b286790>: Failed to establish a new connection: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/requests/adapters.py", line 439, in send
+    resp = conn.urlopen(
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 719, in urlopen
+    retries = retries.increment(
+  File "/usr/lib/python3/dist-packages/urllib3/util/retry.py", line 436, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='localhost', port=5300): Max retries exceeded with url: /Message/ (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f367b286790>: Failed to establish a new connection: [Errno 111] Connection refused'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "./gateway.py", line 124, in gateway
+    upstream_response = requests.request(
+  File "/usr/lib/python3/dist-packages/requests/api.py", line 60, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "/usr/lib/python3/dist-packages/requests/sessions.py", line 533, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/usr/lib/python3/dist-packages/requests/sessions.py", line 646, in send
+    r = adapter.send(request, **kwargs)
+  File "/usr/lib/python3/dist-packages/requests/adapters.py", line 516, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='localhost', port=5300): Max retries exceeded with url: /Message/ (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f367b286790>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[2021-04-16 23:30:41,220] DEBUG in root: Upstream URL: http://localhost:5300/Message/
+[2021-04-16 23:31:00,724] DEBUG in root: Requests logging enabled
+[2021-04-16 23:31:01,217] DEBUG in root: Upstream URL: http://localhost:5300/Message/
+[2021-04-16 23:31:01,229] ERROR in root: HTTPConnectionPool(host='localhost', port=5300): Max retries exceeded with url: /Message/ (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f1fe13ec790>: Failed to establish a new connection: [Errno 111] Connection refused'))
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 159, in _new_conn
+    conn = connection.create_connection(
+  File "/usr/lib/python3/dist-packages/urllib3/util/connection.py", line 84, in create_connection
+    raise err
+  File "/usr/lib/python3/dist-packages/urllib3/util/connection.py", line 74, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 665, in urlopen
+    httplib_response = self._make_request(
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 387, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "/usr/lib/python3.8/http/client.py", line 1255, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "/usr/lib/python3.8/http/client.py", line 1301, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "/usr/lib/python3.8/http/client.py", line 1250, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "/usr/lib/python3.8/http/client.py", line 1010, in _send_output
+    self.send(msg)
+  File "/usr/lib/python3.8/http/client.py", line 950, in send
+    self.connect()
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 187, in connect
+    conn = self._new_conn()
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 171, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x7f1fe13ec790>: Failed to establish a new connection: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/requests/adapters.py", line 439, in send
+    resp = conn.urlopen(
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 719, in urlopen
+    retries = retries.increment(
+  File "/usr/lib/python3/dist-packages/urllib3/util/retry.py", line 436, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='localhost', port=5300): Max retries exceeded with url: /Message/ (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f1fe13ec790>: Failed to establish a new connection: [Errno 111] Connection refused'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "./gateway.py", line 124, in gateway
+    upstream_response = requests.request(
+  File "/usr/lib/python3/dist-packages/requests/api.py", line 60, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "/usr/lib/python3/dist-packages/requests/sessions.py", line 533, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/usr/lib/python3/dist-packages/requests/sessions.py", line 646, in send
+    r = adapter.send(request, **kwargs)
+  File "/usr/lib/python3/dist-packages/requests/adapters.py", line 516, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='localhost', port=5300): Max retries exceeded with url: /Message/ (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f1fe13ec790>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[2021-04-16 23:32:07,372] DEBUG in root: Upstream URL: http://localhost:5300/Message/
+[2021-04-16 23:32:07,395] ERROR in root: HTTPConnectionPool(host='localhost', port=5300): Max retries exceeded with url: /Message/ (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f1fe13d7820>: Failed to establish a new connection: [Errno 111] Connection refused'))
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 159, in _new_conn
+    conn = connection.create_connection(
+  File "/usr/lib/python3/dist-packages/urllib3/util/connection.py", line 84, in create_connection
+    raise err
+  File "/usr/lib/python3/dist-packages/urllib3/util/connection.py", line 74, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 665, in urlopen
+    httplib_response = self._make_request(
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 387, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "/usr/lib/python3.8/http/client.py", line 1255, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "/usr/lib/python3.8/http/client.py", line 1301, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "/usr/lib/python3.8/http/client.py", line 1250, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "/usr/lib/python3.8/http/client.py", line 1010, in _send_output
+    self.send(msg)
+  File "/usr/lib/python3.8/http/client.py", line 950, in send
+    self.connect()
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 187, in connect
+    conn = self._new_conn()
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 171, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x7f1fe13d7820>: Failed to establish a new connection: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/requests/adapters.py", line 439, in send
+    resp = conn.urlopen(
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 719, in urlopen
+    retries = retries.increment(
+  File "/usr/lib/python3/dist-packages/urllib3/util/retry.py", line 436, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='localhost', port=5300): Max retries exceeded with url: /Message/ (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f1fe13d7820>: Failed to establish a new connection: [Errno 111] Connection refused'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "./gateway.py", line 124, in gateway
+    upstream_response = requests.request(
+  File "/usr/lib/python3/dist-packages/requests/api.py", line 60, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "/usr/lib/python3/dist-packages/requests/sessions.py", line 533, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/usr/lib/python3/dist-packages/requests/sessions.py", line 646, in send
+    r = adapter.send(request, **kwargs)
+  File "/usr/lib/python3/dist-packages/requests/adapters.py", line 516, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='localhost', port=5300): Max retries exceeded with url: /Message/ (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f1fe13d7820>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[2021-04-16 23:33:14,557] DEBUG in root: Requests logging enabled
+[2021-04-16 23:33:16,483] DEBUG in root: Upstream URL: http://localhost:5300/Message/
+[2021-04-16 23:34:07,653] DEBUG in root: Upstream URL: http://localhost:5300/Message/
+[2021-04-16 23:34:43,970] DEBUG in root: Requests logging enabled
+[2021-04-16 23:34:44,363] DEBUG in root: Upstream URL: http://localhost:5300/Message/
+[2021-04-16 23:35:06,266] DEBUG in root: Requests logging enabled
+[2021-04-16 23:35:07,953] DEBUG in root: Upstream URL: http://localhost:5300/Message/
+[2021-04-16 23:35:53,036] DEBUG in root: Requests logging enabled
+[2021-04-16 23:35:53,748] DEBUG in root: Upstream URL: http://localhost:5300/Message/
+[2021-04-16 23:36:42,834] DEBUG in root: Requests logging enabled
+[2021-04-16 23:36:43,474] DEBUG in root: Upstream URL: http://localhost:5300/Message/
+[2021-04-16 23:38:17,417] DEBUG in root: Requests logging enabled
+[2021-04-16 23:38:37,557] DEBUG in root: Upstream URL: http://localhost:5100/users?%20username=test1
+[2021-04-16 23:38:45,791] DEBUG in root: Upstream URL: http://localhost:5100/users?username=test1
+[2021-04-16 23:38:52,480] DEBUG in root: Upstream URL: http://localhost:5100/users/?username=test1
+[2021-04-16 23:39:00,143] DEBUG in root: Upstream URL: http://localhost:5100/Users/?username=test1
+[2021-04-16 23:39:09,384] DEBUG in root: Upstream URL: http://localhost:5100/Users/?username=test3
+[2021-04-16 23:39:25,676] DEBUG in root: Upstream URL: http://localhost:5100/Users?username=test3
+[2021-04-16 23:40:51,641] DEBUG in root: Upstream URL: http://localhost:5300/Message/
+[2021-04-16 23:40:59,480] DEBUG in root: Requests logging enabled
+[2021-04-16 23:41:01,794] DEBUG in root: Upstream URL: http://localhost:5300/Message/
+[2021-04-16 23:44:04,568] DEBUG in root: Upstream URL: http://localhost:5300/Message/
+[2021-04-16 23:45:35,010] DEBUG in root: Requests logging enabled
+[2021-04-16 23:45:36,499] DEBUG in root: Upstream URL: http://localhost:5300/Message/
+[2021-04-16 23:49:12,321] DEBUG in boto3.dynamodb.table: Batch write sent 3, unprocessed: 0
+[2021-04-16 23:49:29,514] DEBUG in root: Requests logging enabled
+[2021-04-16 23:49:30,766] DEBUG in root: Upstream URL: http://localhost:5300/Message/
+[2021-04-16 23:49:49,286] DEBUG in root: Requests logging enabled
+[2021-04-16 23:50:03,393] DEBUG in root: Upstream URL: http://localhost:5300/Message/
+[2021-04-16 23:51:26,909] DEBUG in root: Requests logging enabled
+[2021-04-16 23:51:28,525] DEBUG in root: Upstream URL: http://localhost:5300/Message/
+[2021-04-16 23:54:03,226] DEBUG in root: Requests logging enabled
+[2021-04-16 23:54:31,697] DEBUG in root: Requests logging enabled
+[2021-04-16 23:54:45,733] DEBUG in root: Upstream URL: http://localhost:5300/Message/4/reply/
+[2021-04-17 00:11:21,986] DEBUG in root: Requests logging enabled
+[2021-04-17 00:11:23,065] DEBUG in root: Upstream URL: http://localhost:5300/Message/4/reply/
+[2021-04-17 00:37:44,504] DEBUG in boto3.dynamodb.table: Batch write sent 3, unprocessed: 0
+[2021-04-17 00:38:11,510] DEBUG in boto3.dynamodb.table: Batch write sent 3, unprocessed: 0
+[2021-04-17 00:38:53,674] DEBUG in boto3.dynamodb.table: Batch write sent 3, unprocessed: 0
+[2021-04-17 00:49:05,839] DEBUG in root: Requests logging enabled
+[2021-04-17 00:49:09,127] DEBUG in root: Upstream URL: http://localhost:5300/Message/682f260b-d040-4458-bc3f-393ce131397f/reply/
+[2021-04-17 00:50:16,210] DEBUG in boto3.dynamodb.table: Batch write sent 3, unprocessed: 0
+[2021-04-17 00:50:39,050] DEBUG in boto3.dynamodb.table: Batch write sent 3, unprocessed: 0
+[2021-04-17 00:50:45,521] DEBUG in root: Requests logging enabled
+[2021-04-17 00:50:50,126] DEBUG in root: Upstream URL: http://localhost:5300/Message/682f260b-d040-4458-bc3f-393ce131397f/reply/
+[2021-04-17 00:53:43,319] DEBUG in root: Requests logging enabled
+[2021-04-17 00:54:05,005] DEBUG in root: Requests logging enabled
+[2021-04-17 00:54:10,051] DEBUG in root: Upstream URL: http://localhost:5300/Message/682f260b-d040-4458-bc3f-393ce131397f/reply/
+[2021-04-17 00:55:58,407] DEBUG in root: Requests logging enabled
+[2021-04-17 00:55:59,564] DEBUG in root: Upstream URL: http://localhost:5300/Message/682f260b-d040-4458-bc3f-393ce131397f/reply/
+[2021-04-17 00:55:59,567] ERROR in root: HTTPConnectionPool(host='localhost', port=5300): Max retries exceeded with url: /Message/682f260b-d040-4458-bc3f-393ce131397f/reply/ (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7fed7f64ec10>: Failed to establish a new connection: [Errno 111] Connection refused'))
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 159, in _new_conn
+    conn = connection.create_connection(
+  File "/usr/lib/python3/dist-packages/urllib3/util/connection.py", line 84, in create_connection
+    raise err
+  File "/usr/lib/python3/dist-packages/urllib3/util/connection.py", line 74, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 665, in urlopen
+    httplib_response = self._make_request(
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 387, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "/usr/lib/python3.8/http/client.py", line 1255, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "/usr/lib/python3.8/http/client.py", line 1301, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "/usr/lib/python3.8/http/client.py", line 1250, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "/usr/lib/python3.8/http/client.py", line 1010, in _send_output
+    self.send(msg)
+  File "/usr/lib/python3.8/http/client.py", line 950, in send
+    self.connect()
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 187, in connect
+    conn = self._new_conn()
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 171, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x7fed7f64ec10>: Failed to establish a new connection: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/requests/adapters.py", line 439, in send
+    resp = conn.urlopen(
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 719, in urlopen
+    retries = retries.increment(
+  File "/usr/lib/python3/dist-packages/urllib3/util/retry.py", line 436, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='localhost', port=5300): Max retries exceeded with url: /Message/682f260b-d040-4458-bc3f-393ce131397f/reply/ (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7fed7f64ec10>: Failed to establish a new connection: [Errno 111] Connection refused'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "./gateway.py", line 124, in gateway
+    upstream_response = requests.request(
+  File "/usr/lib/python3/dist-packages/requests/api.py", line 60, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "/usr/lib/python3/dist-packages/requests/sessions.py", line 533, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/usr/lib/python3/dist-packages/requests/sessions.py", line 646, in send
+    r = adapter.send(request, **kwargs)
+  File "/usr/lib/python3/dist-packages/requests/adapters.py", line 516, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='localhost', port=5300): Max retries exceeded with url: /Message/682f260b-d040-4458-bc3f-393ce131397f/reply/ (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7fed7f64ec10>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[2021-04-17 00:56:33,529] DEBUG in root: Requests logging enabled
+[2021-04-17 00:56:36,005] DEBUG in root: Upstream URL: http://localhost:5300/Message/682f260b-d040-4458-bc3f-393ce131397f/reply/
+[2021-04-17 00:59:11,989] DEBUG in root: Requests logging enabled
+[2021-04-17 00:59:12,822] DEBUG in root: Upstream URL: http://localhost:5300/Message/682f260b-d040-4458-bc3f-393ce131397f/reply/
+[2021-04-17 00:59:58,282] DEBUG in root: Upstream URL: http://localhost:5300/Message/682f260b-d040-4458-bc3f-393ce131397f/reply/
+[2021-04-17 01:01:24,096] DEBUG in root: Requests logging enabled
+[2021-04-17 01:01:24,561] DEBUG in root: Upstream URL: http://localhost:5300/Message/682f260b-d040-4458-bc3f-393ce131397f/reply/
+[2021-04-17 01:01:34,255] DEBUG in root: Upstream URL: http://localhost:5300/Message/682f260b-d040-4458-bc3f-393ce131397f/reply/
+[2021-04-17 01:05:31,737] DEBUG in root: Requests logging enabled
+[2021-04-17 01:05:32,207] DEBUG in root: Upstream URL: http://localhost:5300/Message/682f260b-d040-4458-bc3f-393ce131397f/reply/
+[2021-04-17 01:05:52,241] DEBUG in root: Requests logging enabled
+[2021-04-17 01:05:52,699] DEBUG in root: Upstream URL: http://localhost:5300/Message/682f260b-d040-4458-bc3f-393ce131397f/reply/
+[2021-04-17 01:09:30,130] DEBUG in root: Upstream URL: http://localhost:5300/Message/682f260b-d040-4458-bc3f-393ce131397f/reply/
+[2021-04-17 01:09:41,864] DEBUG in root: Requests logging enabled
+[2021-04-17 01:09:48,286] DEBUG in root: Upstream URL: http://localhost:5300/Message/682f260b-d040-4458-bc3f-393ce131397f/reply/
+[2021-04-17 01:10:38,737] DEBUG in root: Requests logging enabled
+[2021-04-17 01:10:41,166] DEBUG in root: Upstream URL: http://localhost:5300/Message/682f260b-d040-4458-bc3f-393ce131397f/reply/
+[2021-04-17 01:11:47,880] DEBUG in root: Requests logging enabled
+[2021-04-17 01:11:49,357] DEBUG in root: Upstream URL: http://localhost:5300/Message/682f260b-d040-4458-bc3f-393ce131397f/reply/
+[2021-04-17 01:12:40,167] DEBUG in root: Requests logging enabled
+[2021-04-17 01:12:43,200] DEBUG in root: Upstream URL: http://localhost:5300/Message/682f260b-d040-4458-bc3f-393ce131397f/reply/
+[2021-04-17 01:13:20,996] DEBUG in root: Requests logging enabled
+[2021-04-17 01:13:23,383] DEBUG in root: Upstream URL: http://localhost:5300/Message/682f260b-d040-4458-bc3f-393ce131397f/reply/
+[2021-04-17 01:13:52,800] DEBUG in root: Requests logging enabled
+[2021-04-17 01:13:53,504] DEBUG in root: Upstream URL: http://localhost:5300/Message/682f260b-d040-4458-bc3f-393ce131397f/reply/
+[2021-04-17 01:14:27,397] DEBUG in root: Requests logging enabled
+[2021-04-17 01:14:28,388] DEBUG in root: Upstream URL: http://localhost:5300/Message/682f260b-d040-4458-bc3f-393ce131397f/reply/
+[2021-04-17 01:14:55,421] DEBUG in root: Requests logging enabled
+[2021-04-17 01:14:56,049] DEBUG in root: Upstream URL: http://localhost:5300/Message/682f260b-d040-4458-bc3f-393ce131397f/reply/
+[2021-04-17 01:15:16,245] DEBUG in root: Requests logging enabled
+[2021-04-17 01:15:17,776] DEBUG in root: Upstream URL: http://localhost:5300/Message/682f260b-d040-4458-bc3f-393ce131397f/reply/
+[2021-04-17 01:16:07,610] DEBUG in root: Requests logging enabled
+[2021-04-17 01:16:08,890] DEBUG in root: Upstream URL: http://localhost:5300/Message/682f260b-d040-4458-bc3f-393ce131397f/reply/
+[2021-04-17 01:16:30,335] DEBUG in root: Upstream URL: http://localhost:5300/Message/682f260b-d040-4458-bc3f-393ce131397f/reply/
+[2021-04-17 01:16:46,411] DEBUG in root: Upstream URL: http://localhost:5300/Message/682f260b-d040-4458-bc3f-393ce131397f/reply/
+[2021-04-17 01:16:46,413] ERROR in root: HTTPConnectionPool(host='localhost', port=5300): Max retries exceeded with url: /Message/682f260b-d040-4458-bc3f-393ce131397f/reply/ (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f1173329eb0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 159, in _new_conn
+    conn = connection.create_connection(
+  File "/usr/lib/python3/dist-packages/urllib3/util/connection.py", line 84, in create_connection
+    raise err
+  File "/usr/lib/python3/dist-packages/urllib3/util/connection.py", line 74, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 665, in urlopen
+    httplib_response = self._make_request(
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 387, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "/usr/lib/python3.8/http/client.py", line 1255, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "/usr/lib/python3.8/http/client.py", line 1301, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "/usr/lib/python3.8/http/client.py", line 1250, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "/usr/lib/python3.8/http/client.py", line 1010, in _send_output
+    self.send(msg)
+  File "/usr/lib/python3.8/http/client.py", line 950, in send
+    self.connect()
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 187, in connect
+    conn = self._new_conn()
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 171, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x7f1173329eb0>: Failed to establish a new connection: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/requests/adapters.py", line 439, in send
+    resp = conn.urlopen(
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 719, in urlopen
+    retries = retries.increment(
+  File "/usr/lib/python3/dist-packages/urllib3/util/retry.py", line 436, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='localhost', port=5300): Max retries exceeded with url: /Message/682f260b-d040-4458-bc3f-393ce131397f/reply/ (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f1173329eb0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "./gateway.py", line 124, in gateway
+    upstream_response = requests.request(
+  File "/usr/lib/python3/dist-packages/requests/api.py", line 60, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "/usr/lib/python3/dist-packages/requests/sessions.py", line 533, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/usr/lib/python3/dist-packages/requests/sessions.py", line 646, in send
+    r = adapter.send(request, **kwargs)
+  File "/usr/lib/python3/dist-packages/requests/adapters.py", line 516, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='localhost', port=5300): Max retries exceeded with url: /Message/682f260b-d040-4458-bc3f-393ce131397f/reply/ (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f1173329eb0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[2021-04-17 01:16:48,735] DEBUG in root: Upstream URL: http://localhost:5300/Message/682f260b-d040-4458-bc3f-393ce131397f/reply/
+[2021-04-17 01:16:57,926] DEBUG in root: Requests logging enabled
+[2021-04-17 01:16:58,372] DEBUG in root: Upstream URL: http://localhost:5300/Message/682f260b-d040-4458-bc3f-393ce131397f/reply/
+[2021-04-17 01:17:13,724] DEBUG in root: Upstream URL: http://localhost:5300/Message/682f260b-d040-4458-bc3f-393ce131397f/reply/
+[2021-04-17 01:17:13,728] ERROR in root: HTTPConnectionPool(host='localhost', port=5300): Max retries exceeded with url: /Message/682f260b-d040-4458-bc3f-393ce131397f/reply/ (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f00bed85b80>: Failed to establish a new connection: [Errno 111] Connection refused'))
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 159, in _new_conn
+    conn = connection.create_connection(
+  File "/usr/lib/python3/dist-packages/urllib3/util/connection.py", line 84, in create_connection
+    raise err
+  File "/usr/lib/python3/dist-packages/urllib3/util/connection.py", line 74, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 665, in urlopen
+    httplib_response = self._make_request(
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 387, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "/usr/lib/python3.8/http/client.py", line 1255, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "/usr/lib/python3.8/http/client.py", line 1301, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "/usr/lib/python3.8/http/client.py", line 1250, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "/usr/lib/python3.8/http/client.py", line 1010, in _send_output
+    self.send(msg)
+  File "/usr/lib/python3.8/http/client.py", line 950, in send
+    self.connect()
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 187, in connect
+    conn = self._new_conn()
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 171, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x7f00bed85b80>: Failed to establish a new connection: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/requests/adapters.py", line 439, in send
+    resp = conn.urlopen(
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 719, in urlopen
+    retries = retries.increment(
+  File "/usr/lib/python3/dist-packages/urllib3/util/retry.py", line 436, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='localhost', port=5300): Max retries exceeded with url: /Message/682f260b-d040-4458-bc3f-393ce131397f/reply/ (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f00bed85b80>: Failed to establish a new connection: [Errno 111] Connection refused'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "./gateway.py", line 124, in gateway
+    upstream_response = requests.request(
+  File "/usr/lib/python3/dist-packages/requests/api.py", line 60, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "/usr/lib/python3/dist-packages/requests/sessions.py", line 533, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/usr/lib/python3/dist-packages/requests/sessions.py", line 646, in send
+    r = adapter.send(request, **kwargs)
+  File "/usr/lib/python3/dist-packages/requests/adapters.py", line 516, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='localhost', port=5300): Max retries exceeded with url: /Message/682f260b-d040-4458-bc3f-393ce131397f/reply/ (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f00bed85b80>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[2021-04-17 01:17:21,253] DEBUG in root: Requests logging enabled
+[2021-04-17 01:17:21,913] DEBUG in root: Upstream URL: http://localhost:5300/Message/682f260b-d040-4458-bc3f-393ce131397f/reply/
+[2021-04-17 01:19:51,897] DEBUG in boto3.dynamodb.table: Batch write sent 3, unprocessed: 0
+[2021-04-17 01:20:01,527] DEBUG in root: Upstream URL: http://localhost:5300/Message/682f260b-d040-4458-bc3f-393ce131397f/reply/
+[2021-04-17 01:20:40,849] DEBUG in root: Requests logging enabled
+[2021-04-17 01:20:41,314] DEBUG in root: Upstream URL: http://localhost:5300/Message/682f260b-d040-4458-bc3f-393ce131397f/reply/
+[2021-04-17 01:21:48,354] DEBUG in root: Requests logging enabled
+[2021-04-17 01:21:50,027] DEBUG in root: Upstream URL: http://localhost:5300/Message/682f260b-d040-4458-bc3f-393ce131397f/reply/
+[2021-04-17 01:25:40,591] DEBUG in root: Requests logging enabled
+[2021-04-17 01:25:51,933] DEBUG in root: Upstream URL: http://localhost:5300/Message/test3
+[2021-04-17 01:26:14,640] DEBUG in root: Upstream URL: http://localhost:5300/Message/test2
+[2021-04-17 01:26:19,564] DEBUG in root: Upstream URL: http://localhost:5300/Message/test1
+[2021-04-17 01:28:04,323] DEBUG in root: Upstream URL: http://localhost:5300/Message/test1
+[2021-04-17 01:28:21,921] DEBUG in root: Requests logging enabled
+[2021-04-17 01:28:23,456] DEBUG in root: Upstream URL: http://localhost:5300/Message/test1
+[2021-04-17 01:28:49,942] DEBUG in root: Upstream URL: http://localhost:5300/Message/test1
+[2021-04-17 01:29:20,697] DEBUG in root: Requests logging enabled
+[2021-04-17 01:29:21,910] DEBUG in root: Upstream URL: http://localhost:5300/Message/test1
+[2021-04-17 01:29:50,763] DEBUG in root: Requests logging enabled
+[2021-04-17 01:29:51,527] DEBUG in root: Upstream URL: http://localhost:5300/Message/test1
+[2021-04-17 01:30:18,313] DEBUG in root: Requests logging enabled
+[2021-04-17 01:30:19,510] DEBUG in root: Upstream URL: http://localhost:5300/Message/test1
+[2021-04-17 01:31:51,277] DEBUG in boto3.dynamodb.table: Batch write sent 3, unprocessed: 0
+[2021-04-17 01:32:39,830] DEBUG in root: Requests logging enabled
+[2021-04-17 01:32:47,162] DEBUG in boto3.dynamodb.table: Batch write sent 3, unprocessed: 0
+[2021-04-17 01:32:51,452] DEBUG in root: Upstream URL: http://localhost:5300/Message/test2
+[2021-04-17 01:37:04,806] DEBUG in root: Requests logging enabled
+[2021-04-17 01:37:06,216] DEBUG in root: Upstream URL: http://localhost:5300/Message/test2
+[2021-04-17 01:37:54,829] DEBUG in root: Upstream URL: http://localhost:5300/Message/test1
+[2021-04-17 01:37:57,124] DEBUG in root: Upstream URL: http://localhost:5300/Message/test1
+[2021-04-17 01:38:23,570] DEBUG in root: Upstream URL: http://localhost:5300/Message/test1
+[2021-04-17 01:38:23,576] ERROR in root: HTTPConnectionPool(host='localhost', port=5300): Max retries exceeded with url: /Message/test1 (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7fdaf2ef5c70>: Failed to establish a new connection: [Errno 111] Connection refused'))
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 159, in _new_conn
+    conn = connection.create_connection(
+  File "/usr/lib/python3/dist-packages/urllib3/util/connection.py", line 84, in create_connection
+    raise err
+  File "/usr/lib/python3/dist-packages/urllib3/util/connection.py", line 74, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 665, in urlopen
+    httplib_response = self._make_request(
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 387, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "/usr/lib/python3.8/http/client.py", line 1255, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "/usr/lib/python3.8/http/client.py", line 1301, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "/usr/lib/python3.8/http/client.py", line 1250, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "/usr/lib/python3.8/http/client.py", line 1010, in _send_output
+    self.send(msg)
+  File "/usr/lib/python3.8/http/client.py", line 950, in send
+    self.connect()
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 187, in connect
+    conn = self._new_conn()
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 171, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x7fdaf2ef5c70>: Failed to establish a new connection: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/requests/adapters.py", line 439, in send
+    resp = conn.urlopen(
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 719, in urlopen
+    retries = retries.increment(
+  File "/usr/lib/python3/dist-packages/urllib3/util/retry.py", line 436, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='localhost', port=5300): Max retries exceeded with url: /Message/test1 (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7fdaf2ef5c70>: Failed to establish a new connection: [Errno 111] Connection refused'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "./gateway.py", line 124, in gateway
+    upstream_response = requests.request(
+  File "/usr/lib/python3/dist-packages/requests/api.py", line 60, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "/usr/lib/python3/dist-packages/requests/sessions.py", line 533, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/usr/lib/python3/dist-packages/requests/sessions.py", line 646, in send
+    r = adapter.send(request, **kwargs)
+  File "/usr/lib/python3/dist-packages/requests/adapters.py", line 516, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='localhost', port=5300): Max retries exceeded with url: /Message/test1 (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7fdaf2ef5c70>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[2021-04-17 01:38:40,894] DEBUG in root: Requests logging enabled
+[2021-04-17 01:38:42,556] DEBUG in root: Upstream URL: http://localhost:5300/Message/test1
+[2021-04-17 01:45:21,701] DEBUG in root: Requests logging enabled
+[2021-04-17 01:48:39,008] DEBUG in boto3.dynamodb.table: Batch write sent 3, unprocessed: 0
+[2021-04-17 01:48:51,197] DEBUG in root: Upstream URL: http://localhost:5300/Message/test1
+[2021-04-17 01:49:51,816] DEBUG in root: Upstream URL: http://localhost:5300/Message/test1
+[2021-04-17 01:49:51,818] ERROR in root: HTTPConnectionPool(host='localhost', port=5300): Max retries exceeded with url: /Message/test1 (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7fe46b308700>: Failed to establish a new connection: [Errno 111] Connection refused'))
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 159, in _new_conn
+    conn = connection.create_connection(
+  File "/usr/lib/python3/dist-packages/urllib3/util/connection.py", line 84, in create_connection
+    raise err
+  File "/usr/lib/python3/dist-packages/urllib3/util/connection.py", line 74, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 665, in urlopen
+    httplib_response = self._make_request(
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 387, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "/usr/lib/python3.8/http/client.py", line 1255, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "/usr/lib/python3.8/http/client.py", line 1301, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "/usr/lib/python3.8/http/client.py", line 1250, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "/usr/lib/python3.8/http/client.py", line 1010, in _send_output
+    self.send(msg)
+  File "/usr/lib/python3.8/http/client.py", line 950, in send
+    self.connect()
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 187, in connect
+    conn = self._new_conn()
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 171, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x7fe46b308700>: Failed to establish a new connection: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/requests/adapters.py", line 439, in send
+    resp = conn.urlopen(
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 719, in urlopen
+    retries = retries.increment(
+  File "/usr/lib/python3/dist-packages/urllib3/util/retry.py", line 436, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='localhost', port=5300): Max retries exceeded with url: /Message/test1 (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7fe46b308700>: Failed to establish a new connection: [Errno 111] Connection refused'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "./gateway.py", line 124, in gateway
+    upstream_response = requests.request(
+  File "/usr/lib/python3/dist-packages/requests/api.py", line 60, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "/usr/lib/python3/dist-packages/requests/sessions.py", line 533, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/usr/lib/python3/dist-packages/requests/sessions.py", line 646, in send
+    r = adapter.send(request, **kwargs)
+  File "/usr/lib/python3/dist-packages/requests/adapters.py", line 516, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='localhost', port=5300): Max retries exceeded with url: /Message/test1 (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7fe46b308700>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[2021-04-17 01:50:08,005] DEBUG in root: Requests logging enabled
+[2021-04-17 01:50:10,493] DEBUG in root: Upstream URL: http://localhost:5300/Message/test1
+[2021-04-17 01:50:37,978] DEBUG in root: Upstream URL: http://localhost:5300/Message/test1
+[2021-04-17 01:52:13,812] DEBUG in root: Requests logging enabled
+[2021-04-17 01:52:14,830] DEBUG in root: Upstream URL: http://localhost:5300/Message/test1
+[2021-04-17 01:53:16,685] DEBUG in root: Requests logging enabled
+[2021-04-17 01:53:18,687] DEBUG in root: Upstream URL: http://localhost:5300/Message/test1
+[2021-04-17 01:54:01,222] DEBUG in boto3.dynamodb.table: Batch write sent 3, unprocessed: 0
+[2021-04-17 01:54:04,863] DEBUG in root: Upstream URL: http://localhost:5300/Message/test1
+[2021-04-17 01:57:08,985] DEBUG in root: Upstream URL: http://localhost:5300/Message/1/reply
+[2021-04-17 02:00:39,691] DEBUG in root: Upstream URL: http://localhost:5300/Message/9cbb7fbe-5608-4857-9cf8-4ddb3f4c9869/reply
+[2021-04-17 02:01:52,258] DEBUG in root: Upstream URL: http://localhost:5300/Message/9cbb7fbe-5608-4857-9cf8-4ddb3f4c9869/reply
+[2021-04-17 22:07:47,980] DEBUG in root: Requests logging enabled
+[2021-04-17 22:08:37,643] DEBUG in boto3.dynamodb.table: Batch write sent 3, unprocessed: 0
+[2021-04-17 22:08:55,215] DEBUG in root: Upstream URL: http://localhost:5300/Message/test1
+[2021-04-17 22:09:25,385] DEBUG in root: Upstream URL: http://localhost:5300/Message/9cbb7fbe-5608-4857-9cf8-4ddb3f4c9869/reply
+[2021-04-17 22:27:42,611] DEBUG in boto3.dynamodb.table: Batch write sent 3, unprocessed: 0
+[2021-04-17 23:08:15,894] DEBUG in root: Upstream URL: http://localhost:5300/Message/
+[2021-04-17 23:48:58,299] DEBUG in boto3.dynamodb.table: Batch write sent 4, unprocessed: 0
+[2021-04-17 23:49:23,978] DEBUG in root: Upstream URL: http://localhost:5300/Message/test1
+[2021-04-17 23:51:54,589] DEBUG in boto3.dynamodb.table: Batch write sent 4, unprocessed: 0
+[2021-04-17 23:52:08,969] DEBUG in root: Upstream URL: http://localhost:5300/Message/test1
+[2021-04-17 23:52:53,402] DEBUG in root: Upstream URL: http://localhost:5300/Message/aec67e05-9ae6-444f-8cd9-dcf00d738572/reply/
+[2021-04-17 23:53:09,255] DEBUG in root: Upstream URL: http://localhost:5300/Message/9cbb7fbe-5608-4857-9cf8-4ddb3f4c9869/reply/
+[2021-04-17 23:53:55,565] DEBUG in root: Upstream URL: http://localhost:5300/Message/9cbb7fbe-5608-4857-9cf8-4ddb3f4c9869/reply/
+[2021-04-17 23:54:05,317] DEBUG in root: Upstream URL: http://localhost:5300/Message/9cbb7fbe-5608-4857-9cf8-4ddb3f4c9869/reply/
+[2021-04-17 23:55:07,885] DEBUG in root: Requests logging enabled
+[2021-04-17 23:55:11,369] DEBUG in root: Upstream URL: http://localhost:5300/Message/9cbb7fbe-5608-4857-9cf8-4ddb3f4c9869/reply/
+[2021-04-17 23:56:07,370] DEBUG in root: Requests logging enabled
+[2021-04-17 23:56:09,038] DEBUG in root: Upstream URL: http://localhost:5300/Message/9cbb7fbe-5608-4857-9cf8-4ddb3f4c9869/reply/
+[2021-04-17 23:58:01,442] DEBUG in root: Requests logging enabled
+[2021-04-17 23:58:09,697] DEBUG in root: Upstream URL: http://localhost:5300/Message/9cbb7fbe-5608-4857-9cf8-4ddb3f4c9869/reply/
+[2021-04-17 23:59:17,978] DEBUG in root: Requests logging enabled
+[2021-04-17 23:59:20,823] DEBUG in root: Upstream URL: http://localhost:5300/Message/9cbb7fbe-5608-4857-9cf8-4ddb3f4c9869/reply/
+[2021-04-18 00:00:03,047] DEBUG in root: Requests logging enabled
+[2021-04-18 00:00:04,959] DEBUG in root: Upstream URL: http://localhost:5300/Message/9cbb7fbe-5608-4857-9cf8-4ddb3f4c9869/reply/
+[2021-04-18 00:00:44,543] DEBUG in root: Requests logging enabled
+[2021-04-18 00:00:46,594] DEBUG in root: Upstream URL: http://localhost:5300/Message/9cbb7fbe-5608-4857-9cf8-4ddb3f4c9869/reply/
+[2021-04-18 00:02:11,126] DEBUG in root: Requests logging enabled
+[2021-04-18 00:02:12,618] DEBUG in root: Upstream URL: http://localhost:5300/Message/9cbb7fbe-5608-4857-9cf8-4ddb3f4c9869/reply/
+[2021-04-18 00:03:08,720] DEBUG in root: Requests logging enabled
+[2021-04-18 00:03:10,823] DEBUG in root: Upstream URL: http://localhost:5300/Message/9cbb7fbe-5608-4857-9cf8-4ddb3f4c9869/reply/
+[2021-04-18 00:03:39,869] DEBUG in root: Requests logging enabled
+[2021-04-18 00:03:41,765] DEBUG in root: Upstream URL: http://localhost:5300/Message/9cbb7fbe-5608-4857-9cf8-4ddb3f4c9869/reply/
+[2021-04-18 00:04:20,290] DEBUG in root: Requests logging enabled
+[2021-04-18 00:04:25,033] DEBUG in root: Upstream URL: http://localhost:5300/Message/9cbb7fbe-5608-4857-9cf8-4ddb3f4c9869/reply/
+[2021-04-18 00:05:58,665] DEBUG in root: Requests logging enabled
+[2021-04-18 00:06:00,660] DEBUG in root: Upstream URL: http://localhost:5300/Message/9cbb7fbe-5608-4857-9cf8-4ddb3f4c9869/reply/
+[2021-04-18 00:06:55,310] DEBUG in root: Requests logging enabled
+[2021-04-18 00:07:04,866] DEBUG in root: Upstream URL: http://localhost:5300/Message/9cbb7fbe-5608-4857-9cf8-4ddb3f4c9869/reply/
+[2021-04-18 00:08:33,423] DEBUG in root: Requests logging enabled
+[2021-04-18 00:08:35,180] DEBUG in root: Upstream URL: http://localhost:5300/Message/9cbb7fbe-5608-4857-9cf8-4ddb3f4c9869/reply/
+[2021-04-18 00:09:32,726] DEBUG in root: Requests logging enabled
+[2021-04-18 00:09:34,341] DEBUG in root: Upstream URL: http://localhost:5300/Message/9cbb7fbe-5608-4857-9cf8-4ddb3f4c9869/reply/
+[2021-04-18 00:10:05,791] DEBUG in root: Upstream URL: http://localhost:5300/Message/9cbb7fbe-5608-4857-9cf8-4ddb3f4c9869/reply/
+[2021-04-18 00:10:41,465] DEBUG in root: Requests logging enabled
+[2021-04-18 00:10:44,601] DEBUG in boto3.dynamodb.table: Batch write sent 4, unprocessed: 0
+[2021-04-18 00:10:51,039] DEBUG in root: Upstream URL: http://localhost:5300/Message/9cbb7fbe-5608-4857-9cf8-4ddb3f4c9869/reply/
+[2021-04-18 00:12:08,718] DEBUG in root: Requests logging enabled
+[2021-04-18 00:12:14,488] DEBUG in boto3.dynamodb.table: Batch write sent 4, unprocessed: 0
+[2021-04-18 00:12:16,842] DEBUG in root: Upstream URL: http://localhost:5300/Message/9cbb7fbe-5608-4857-9cf8-4ddb3f4c9869/reply/
+[2021-04-18 00:13:30,329] DEBUG in root: Upstream URL: http://localhost:5300/Message/
+[2021-04-18 00:14:49,375] DEBUG in root: Requests logging enabled
+[2021-04-18 00:14:54,070] DEBUG in root: Upstream URL: http://localhost:5300/Message/
+[2021-04-18 00:15:37,393] DEBUG in root: Upstream URL: http://localhost:5300/Message/
+[2021-04-18 00:16:19,282] DEBUG in root: Upstream URL: http://localhost:5300/Message/test1
+[2021-04-18 00:19:52,928] DEBUG in boto3.dynamodb.table: Batch write sent 4, unprocessed: 0
+[2021-04-18 00:20:19,872] DEBUG in boto3.dynamodb.table: Batch write sent 4, unprocessed: 0
+[2021-04-18 00:20:36,902] DEBUG in root: Upstream URL: http://localhost:5300/Message/
+[2021-04-18 00:20:42,823] DEBUG in root: Upstream URL: http://localhost:5300/Message/test1
+[2021-04-18 00:22:59,979] DEBUG in boto3.dynamodb.table: Batch write sent 4, unprocessed: 0
+[2021-04-18 00:23:06,572] DEBUG in root: Upstream URL: http://localhost:5300/Message/
+[2021-04-18 00:23:09,648] DEBUG in root: Upstream URL: http://localhost:5300/Message/test1
+[2021-04-18 00:28:41,995] DEBUG in boto3.dynamodb.table: Batch write sent 4, unprocessed: 0
+[2021-04-18 00:28:44,820] DEBUG in root: Upstream URL: http://localhost:5300/Message/
+[2021-04-18 00:29:13,274] DEBUG in root: Upstream URL: http://localhost:5300/Message/
+[2021-04-18 00:29:27,009] DEBUG in root: Requests logging enabled
+[2021-04-18 00:29:29,706] DEBUG in root: Upstream URL: http://localhost:5300/Message/
+[2021-04-18 00:37:42,430] DEBUG in root: Requests logging enabled
+[2021-04-18 00:37:44,443] DEBUG in root: Upstream URL: http://localhost:5300/Message/
+[2021-04-18 00:37:53,134] DEBUG in root: Upstream URL: http://localhost:5300/Message/test1
+[2021-04-18 00:41:47,460] DEBUG in root: Upstream URL: http://localhost:5300/Message/9cbb7fbe-5608-4857-9cf8-4ddb3f4c9869/reply
+[2021-04-18 00:42:23,007] DEBUG in root: Upstream URL: http://localhost:5300/Message/9cbb7fbe-5608-4857-9cf8-4ddb3f4c9869/reply
+[2021-04-18 00:42:33,745] DEBUG in root: Upstream URL: http://localhost:5300/Message/9cbb7fbe-5608-4857-9cf8-4ddb3f4c9869/reply
+[2021-04-18 00:43:24,387] DEBUG in root: Upstream URL: http://localhost:5300/Message/9cbb7fbe-5608-4857-9cf8-4ddb3f4c9869/reply/
+[2021-04-18 00:43:30,674] DEBUG in root: Upstream URL: http://localhost:5300/Message/9cbb7fbe-5608-4857-9cf8-4ddb3f4c9869/reply
+[2021-04-18 00:43:59,435] DEBUG in root: Upstream URL: http://localhost:5300/Message/aec67e05-9ae6-444f-8cd9-dcf00d738572/reply/
+[2021-04-18 00:49:32,837] DEBUG in root: Upstream URL: http://localhost:5300/Message/9cbb7fbe-5608-4857-9cf8-4ddb3f4c9869/reply
+[2021-04-18 00:53:32,301] DEBUG in root: Upstream URL: http://localhost:5300/Message/9cbb7fbe-5608-4857-9cf8-4ddb3f4c9869/reply/
