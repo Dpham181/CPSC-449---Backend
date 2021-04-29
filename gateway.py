@@ -29,6 +29,7 @@ app.config.load_config('./etc/gateway.ini')
 upstream_servers = json_config('proxy.upstreams')
 resourse_urls = json_config('resourse.urls')
 prefix = json_config('resourse.prefix')
+stop_words = json_config('resourse.stopwords')
 logging.config.fileConfig(app.config['logging.config'])
 
 
