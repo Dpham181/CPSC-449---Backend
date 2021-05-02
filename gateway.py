@@ -92,6 +92,9 @@ def getRoute(path):
  # DM res
  if resourse_urls[3] in path:
   return upstream_servers[4] + path
+ # search res
+ if resourse_urls[4] in path:
+  return upstream_servers[5] + path 
  # User res
  return upstream_servers[0] + path
   

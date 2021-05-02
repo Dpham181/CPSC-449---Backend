@@ -11,6 +11,10 @@ app = bottle.default_app()
 SearchIndex_DB = bottle.ext.redis.RedisPlugin(host='localhost', decode_responses=True)
 app.install(SearchIndex_DB)
 
+if not sys.warnoptions:
+    import warnings
+    warnings.simplefilter('ignore', ResourceWarning)
+
 def checkfields(payload, fields):
  posted_fields = payload.keys()
  required_fields = fields
@@ -24,8 +28,7 @@ def removePunc(word):
  return word
 
 def checkTokens(text):
- stop_words = gateway.stop_words.casefold()
- print(stop_words)
+ stop_words = gateway.stop_words
  tokens = []
  if text:
   words = text.casefold().split()
@@ -47,9 +50,9 @@ def index(rdb):
  checkfields(payload, {'postId','text'})
  keywords = checkTokens(payload['text'])
  for w in keywords:
-  res = rdb.lpush(w, str(payload['postId']))
+  res = rdb.sadd(w, str(payload['postId']))
  if not res:
-  abort(404)
+  abort(409)
  return HTTPResponse(json.dumps(res), 201)
   
 
@@ -59,10 +62,10 @@ def index(rdb):
 def search(keyword, rdb):
  if not keyword:
   abort(400)
- res = rdb.lrange(keyword,0,-1)
+ res = rdb.smembers(keyword)
  if not res:
   abort(404)
- return HTTPResponse(json.dumps(res), 200)
+ return HTTPResponse({keyword:{'At Posts' :list(res)}}, 200)
   
 #search any keywords list
 # http --verbose http://localhost:5600/search-any/ keywords="i,Peter,26" any=1
@@ -73,7 +76,7 @@ def any(rdb):
   abort(400)
  listwords = payload['keywords'].casefold().split(',')
  wordsearch = listwords[int(payload['any'])]
- res = {wordsearch:rdb.lrange(wordsearch,0,-1)}
+ res = {wordsearch:list(rdb.smembers(wordsearch))}
  if not res:
   abort(404)
  return HTTPResponse(res, 200)
@@ -88,7 +91,7 @@ def all(rdb):
   abort(400)
  listwords = payload['keywords'].casefold().split(',')
  for w in listwords:
-  reponseList.append({w:rdb.lrange(w,0,-1)})
+  reponseList.append({w:list(rdb.smembers(w))})
  if not reponseList:
   abort(404)
  return HTTPResponse(json.dumps(reponseList), 200)
@@ -107,7 +110,7 @@ def exclude(rdb):
  words_search = [w for w in includelist if w in excludeList]
  print(words_search)
  for w in words_search:
-  reponseList.append({w:rdb.lrange(w,0,-1)})
+  reponseList.append({w:list(rdb.smembers(w))})
  if not reponseList:
   abort(404)
  return HTTPResponse(json.dumps(reponseList), 200) 

@@ -41,7 +41,7 @@ def checkPassword(UsersDB):
     user = request.json
     userpassword = api.query(UsersDB, 'SELECT PassWord FROM users WHERE UserName = ?;' ,[user['username']], one = True);
     if not userpassword:
-        abort(404)
+        return HTTPResponse({'Authentication':False},404)
     if userpassword['PassWord'] == user['password']:
         return HTTPResponse({'Authentication':True},200)
     return HTTPResponse({'Authentication':False},401)

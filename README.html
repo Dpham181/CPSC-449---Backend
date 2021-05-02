@@ -1,0 +1,110 @@
+<h1 id="cpsc-449---web-back-end-engineering">CPSC 449 - Web Back-End Engineering</h1>
+<h1 id="project-5">Project 5</h1>
+<h1 id="spring-2021-due-apr-23-section-02">Spring 2021 due Apr 23 (Section 02)</h1>
+<h2 id="we-plan-to-build-a-microblogging-service-similar-to-twitter">We plan to build a microblogging service similar to Twitter</h2>
+<ul>
+<li>Each user has a user timeline consisting of the posts that they have made.</li>
+<li>Each user has a home timeline consisting of recent posts by all users that this user follows.</li>
+<li>There is a public timeline consisting of all posts from all users.</li>
+<li>Timelines are organized in reverse chronological order. When timelines are retrieved through the web service, they should be limited to 25.</li>
+<li>Introducing an API gateway to mediate between users and our services</li>
+<li>Adding polyglot persistence by introducing a new microservice built with DynamoDB Local, a version of Amazon’s DynamoDB service that runs locally on your own computer.</li>
+</ul>
+<h1 id="uri-host">URI host:</h1>
+<ol type="1">
+<li>http://localhost:5000/ (Gateway)</li>
+<li>http://localhost:5100/ (Users service)</li>
+<li>http://localhost:5200/ (Timelines service)</li>
+<li>http://localhost:5300/ (DM service)</li>
+<li>http://localhost:5400/ (api initial splite)</li>
+</ol>
+<h1 id="files-submission">Files Submission:</h1>
+<p><strong>Etc files:</strong> <em><code>api.ini,</code></em> <em><code>gateway.ini</code></em></p>
+<p><strong>view:</strong> <em><code>home.html</code></em></p>
+<p><strong>sql:</strong> <em><code>users.sql,</code></em> <em><code>timelines.sql</code></em></p>
+<p><strong>sqlite and dynamodb setup:</strong> <em><code>api.py,</code></em> <em><code>intitalDynamoDB.py</code></em></p>
+<p><strong>services:</strong> <em><code>gateway.py,</code></em> <em><code>UsersService.py,</code></em> <em><code>MessageService.py,</code></em> <em><code>TimelinesService.py</code></em></p>
+<p><strong>Profile:</strong> <em><code>Profile</code></em></p>
+<h1 id="reason-of-change">Reason of change:</h1>
+<ul>
+<li>In this project 5, I fixed all the error from project 2 by spreading db file into two db.</li>
+<li>Added gateway</li>
+<li>Fixed all the route uri from users and timelines that use to match with three projects combine.</li>
+<li>Redesgined ddl for using Id instead of username.</li>
+<li>Added view using template for populating the Api call same as README.md.</li>
+<li>Updated Profile</li>
+<li>createUser now public in gateway</li>
+</ul>
+<h1 id="project-exe-commandline">Project exe commandline:</h1>
+<p><strong><code>Unzip project5 then use below commands to make dir</code></strong></p>
+<blockquote>
+<pre class="shell-session"><code>$ cd project5</code></pre>
+<pre class="shell-session"><code>$ mkdir var</code></pre>
+<pre class="shell-session"><code>$ cd var</code></pre>
+<pre class="shell-session"><code>$ mkdir log</code></pre>
+<p><strong><code>Running all the services and local dynamodb</code></strong> <strong><code>Assume dynamodb_local files already inside this dir</code></strong></p>
+</blockquote>
+<blockquote>
+<pre class="shell-session"><code>$ foreman start </code></pre>
+</blockquote>
+<p><strong><code>create sqlite databases and dynamodb table</code></strong></p>
+<blockquote>
+<pre class="shell-session"><code>$ ./init.sh </code></pre>
+</blockquote>
+<h1 id="note-this-readme-file-can-also-view-on-httplocalhost5000">Note: this readme file can also view on http://localhost:5000/</h1>
+<h1 id="api-calls">Api calls:</h1>
+<h3 id="all-the-api-calls-through-gateway-at-port-5000">All the api calls through gateway at port 5000:</h3>
+<p><strong><code>createUser(username, email, password)</code></strong></p>
+<blockquote>
+<pre class="shell-session"><code>$ http --verbose POST localhost:5000/SignUp/ UserName=&quot;test4&quot; PassWord=&quot;123&quot; Email=&quot;test4@gmail.com&quot; </code></pre>
+</blockquote>
+<p><strong><code>checkPassword(username, password)</code></strong></p>
+<blockquote>
+<pre class="shell-session"><code>$ http POST localhost:5000/auth/ username=test4 password=123 --auth test4:123</code></pre>
+</blockquote>
+<p><strong><code>addFollower(username,usernameToFollow)</code></strong></p>
+<blockquote>
+<pre class="shell-session"><code>$ http --verbose POST localhost:5000/users/test4/add_follow/  FOLLOWING=&quot;test1&quot; --auth test4:123</code></pre>
+</blockquote>
+<p><strong><code>removeFollower(username, usernameToRemove)</code></strong></p>
+<blockquote>
+<pre class="shell-session"><code>$ http --verbose DELETE http://localhost:5000/users/test1/remove_follower/ FOLLOWING=test2 --auth test1:123</code></pre>
+</blockquote>
+<p><strong><code>getUserTimeline(username)</code></strong></p>
+<blockquote>
+<pre class="shell-session"><code>$ http --verbose http://localhost:5000/Posts/test1 --auth test1:123</code></pre>
+</blockquote>
+<p><strong><code>getPublicTimeline()</code></strong></p>
+<blockquote>
+<pre class="shell-session"><code>$ http --verbose http://localhost:5000/Posts --auth test1:123</code></pre>
+</blockquote>
+<p><strong><code>getHomeTimeline(username)</code></strong></p>
+<blockquote>
+<pre class="shell-session"><code>$ http --verbose http://localhost:5000/Posts/home/test2 --auth test2:123</code></pre>
+</blockquote>
+<p><strong><code>postTweet(username, text)</code></strong></p>
+<blockquote>
+<pre class="shell-session"><code>$ http --verbose POST localhost:5000/Posts/ username=test1 Text=test --auth test1:123</code></pre>
+</blockquote>
+<p><strong><code>sendDirectMessage(to, from, message, quickReplies=None)</code></strong></p>
+<blockquote>
+<pre class="shell-session"><code>$ http POST localhost:5000/Message/ From=test1 To=test3  message=&quot;Hello, How are you&quot; --auth test1:123</code></pre>
+</blockquote>
+<blockquote>
+<pre class="shell-session"><code>$ http POST localhost:5000/Message/ From=test1 To=test3  message=&quot;Hello, are you busy?&quot; quickreplies=&quot;Cant talk,Busy Now,Whatsup&quot; --auth test1:123</code></pre>
+</blockquote>
+<p><strong><code>replyToDirectMessage(messageId, message)</code></strong></p>
+<blockquote>
+<pre class="shell-session"><code>$ http POST localhost:5000/Message/aec67e05-9ae6-444f-8cd9-dcf00d738572/reply/ message=&quot;I am good&quot;  --auth test2:123</code></pre>
+</blockquote>
+<blockquote>
+<pre class="shell-session"><code>$ http POST localhost:5000/Message/9cbb7fbe-5608-4857-9cf8-4ddb3f4c9869/reply/ quick-reply=&#39;0&#39;  --auth test2:123</code></pre>
+</blockquote>
+<p><strong><code>listDirectMessagesFor(username)</code></strong></p>
+<blockquote>
+<pre class="shell-session"><code>$ http GET localhost:5000/Message/9cbb7fbe-5608-4857-9cf8-4ddb3f4c9869/reply --auth test1:123</code></pre>
+</blockquote>
+<p><strong><code>listRepliesTo(messageId)</code></strong></p>
+<blockquote>
+<pre class="shell-session"><code>$ http GET localhost:5000/Message/4/reply --auth test4:123</code></pre>
+</blockquote>

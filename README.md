@@ -1,6 +1,6 @@
 # CPSC 449 - Web Back-End Engineering 
-# Project 5 
-# Spring 2021 due Apr 23 (Section 02)
+# Project 6 
+# Spring 2021 due May 7 (Section 02)
 
 
 ## We plan to build a microblogging service similar to Twitter
@@ -10,6 +10,7 @@
   - Timelines are organized in reverse chronological order. When timelines are retrieved through the web service, they should be limited to 25.
   - Introducing an API gateway to mediate between users and our services
   - Adding polyglot persistence by introducing a new microservice built with DynamoDB Local, a version of Amazon’s DynamoDB service that runs locally on your own computer.
+  - Adding search engine for search text in user's posts by using redis.  
 
 # URI host:
 1.  http://localhost:5000/ (Gateway)
@@ -17,6 +18,8 @@
 3.  http://localhost:5200/ (Timelines service)
 4.  http://localhost:5300/ (DM service)
 5.  http://localhost:5400/ (api initial splite)
+6.  http://localhost:5500/ (dynamodb hosting)
+7.  http://localhost:5600/ (search service)
 
 # Files Submission:
 
@@ -41,6 +44,7 @@
 *`UsersService.py, `* 
 *`MessageService.py, `* 
 *`TimelinesService.py`* 
+*`Search.py`* 
 
 **Profile:**
 *`Profile`*  
@@ -53,36 +57,36 @@
  - Redesgined ddl for using Id instead of username.
  - Added view using template for populating the Api call same as README.md.
  - Updated Profile
- - createUser now public in gateway 
+ - createUser now public in gateway.
+ - interating new search service with editing route in gateway
 
 # Project exe commandline:
 
-**Database setup commands**
+**` Unzip Danh'sproject5 then use below commands to make dir var/log `**
 
 > ```shell-session
-> $ ./init.sh 
+> $ cd Danh'sproject6 
 > ```
 
 > ```shell-session
-> $ cd dynamodb_local_latest
+> $ ./MakeDir.sh
 > ```
 
-> ```shell-session
-> $ java -D"java.library.path=./DynamoDBLocal_lib" -jar DynamoDBLocal.jar
-> ```
+**`Running all the services and local dynamodb `**
 
-> ```shell-session
-> $ python3 intitalDynamoDB.py 
-> ```
-
-**Foreman commands**
-
-*Runinng all the services then open new terminal for Httpie Api call*
+**`Assume dynamodb_local files already inside this dir `**
 
 > ```shell-session
 > $ foreman start 
 > ```
 
+**`create sqlite databases and dynamodb table in a new terminal`**
+
+> ```shell-session
+> $ ./init.sh 
+> ```
+
+# Note: this readme file can also view on http://localhost:5000/  
 
 # Api calls:
 
@@ -139,23 +143,27 @@
 **`sendDirectMessage(to, from, message, quickReplies=None)`**
 
 > ```shell-session
-> $ http POST localhost:5000/test3/Message/test1  message="Hi, How are you?" --auth test3:123
+> $ http POST localhost:5000/Message/ From=test1 To=test3  message="Hello, How are you" --auth test1:123
+> ```
+
+> ```shell-session
+> $ http POST localhost:5000/Message/ From=test1 To=test3  message="Hello, are you busy?" quickreplies="Cant talk,Busy Now,Whatsup" --auth test1:123
 > ```
 
 **`replyToDirectMessage(messageId, message)`**
 
 > ```shell-session
-> $ http PUT localhost:5000/Message/4/reply/ message="I am fine, How about u?"  --auth test1:123
+> $ http POST localhost:5000/Message/aec67e05-9ae6-444f-8cd9-dcf00d738572/reply/ message="I am good"  --auth test2:123
 > ```
 
 > ```shell-session
-> $ http PUT localhost:5000/Message/4/reply/ quickReplies=3  --auth test1:123
+> $ http POST localhost:5000/Message/9cbb7fbe-5608-4857-9cf8-4ddb3f4c9869/reply/ quick-reply='0'  --auth test2:123
 > ```
 
 **`listDirectMessagesFor(username)`**
 
 > ```shell-session
-> $ http GET localhost:5000/Message/test4 --auth test4:123 
+> $ http GET localhost:5000/Message/9cbb7fbe-5608-4857-9cf8-4ddb3f4c9869/reply --auth test1:123
 > ```
 
 **`listRepliesTo(messageId)`**
@@ -163,4 +171,8 @@
 > ```shell-session
 > $ http GET localhost:5000/Message/4/reply --auth test4:123
 > ```
+
+# Search engine Api calls:
+
+
 
