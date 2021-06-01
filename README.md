@@ -1,7 +1,3 @@
-# CPSC 449 - Web Back-End Engineering 
-# Project 6 
-# Spring 2021 due May 7 (Section 02)
-
 
 ## We plan to build a microblogging service similar to Twitter
   - Each user has a user timeline consisting of the posts that they have made.
@@ -172,7 +168,6 @@
 > $ http GET localhost:5000/Message/4/reply --auth test4:123
 > ```
 
-# Search engine Api calls:
 
 
 
